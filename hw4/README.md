@@ -2,7 +2,7 @@
 - StudentID: 313553037
 - Name: 黃瑜明
 ## Introduction
-
+    Utilize modified PromptIR to restore degraded images. The model is trained to remove snow and raindrop artifacts while enhancing overall image quality.
 ## How to install
 1. Clone the repository
     ```
