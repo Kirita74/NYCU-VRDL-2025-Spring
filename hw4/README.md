@@ -1,4 +1,4 @@
-# NYCU Computer Vision 2025 Spring HW4
+# NYCU VRDL 2025 Spring HW4
 - StudentID: 313553037
 - Name: 黃瑜明
 ## Introduction
