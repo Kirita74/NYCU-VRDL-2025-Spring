@@ -2,12 +2,12 @@
 - StudentID: 313553037
 - Name: 黃瑜明
 ## Introduction
-Utilize Mask R-CNN, with ResNext-50 as the backbone to detect individual cell within an image. The model is trained to localize each cell by predicting its bounding box and to classify its corresponding cell class (1–4). 
+
 ## How to install
 1. Clone the repository
     ```
-    git clone git@github.com:Kirita74/NYCU-Computer-Vision-2025-Spring-HW3.git
-    cd NYCU-Computer-Vision-2025-Spring-HW3
+    git clone git@github.com:Kirita74/NYCU-VRDL-2025-Spring.git
+    cd NYCU-VRDL-2025-Spring\hw4
     ```
 2. Create and activate conda environment
     ```
@@ -16,64 +16,51 @@ Utilize Mask R-CNN, with ResNext-50 as the backbone to detect individual cell wi
     cd code
     ```
 3. Download the dataset
-    - Download the dataset form the provided [Link](https://drive.google.com/file/d/1fx4Z6xl5b6r4UFkBrn5l0oPEIagZxQ5u/view)
+    - Download the dataset form the provided [Link](https://drive.google.com/drive/folders/1Q4qLPMCKdjn-iGgXV_8wujDmvDpSI1ul)
     - Place it in the following structure
     ```
     .
     ├── code
-    |   ├── COCOJson.py
+    |   ├── example_img2npz.py
     │   ├── utils.py
     │   ├── main.py
-    │   ├── model.py
+    │   ├── PromptIR.py
     │   └── dataset.py
-    ├── data
+    ├── hw4_realse_dataset
     │   ├── train
-    |   ├── test-relese
-    |   └── test_image_name_to_ids.json
+    |   └── test
     ├── environment.yml
     │   .
     │   .
     │   .
     ```
 ## 
-- Generate train json
-    ```
-    python3 COCOJson.py DATAPATH
-    ```
+
 - Train Model
     ```
-    python3 main.py MODE DATAPATH [--num_epochs EPOCH] [--batch_size BATCH_SIZE] [--learning_rate LEARNING_RATE] [--decay DECAY] [--eta_min ETA_MIN] [--pretrained_weight_path PRETRAINED_WEIGHT_PATH] [--save_path SAVE_PATH] [--log_dir LOG_DIR] [--mask_threshold MASK_THRESHOLD]
+    python3 main.py MODE DATAPATH [--save_dir SAVE_DIR][--num_epochs EPOCH] [--batch_size BATCH_SIZE] [--learning_rate LEARNING_RATE] [--decay DECAY] [--pretrained_weight_path PRETRAINED_WEIGHT_PATH] [--log_dir LOG_DIR]
     ```
     Example:
     ```
-    python3 main.py "train" ../data --num_epochs 15 --batch_size 2 --learing_rate 1e-4 --decay 1e-5 --eta_min 1e-6 --pretraind_weight_path pretrained_model.pth --save_path save_model.pth --log_dir logs
-    --mask_threshold 0.5
+    python3 main.py "train" ..\\hw4_realse_dataset --save_dir weight --num_epochs 100 --batch_size 1 --learing_rate 1e-4 --decay 5e-5 --pretraind_weight_path pretrained_model.pth --log_dir logs
     ```
 - Test Model
     Example:
     ```
-    python3 main.py "test" --pretraind_weight_path pretrained_model.pth --mask_threshold 0.7
+    python3 main.py "test" DATAPATH --pretraind_weight_path pretrained_model.pth
     ```
 
 ## Performance snapshot
 ### Training Parameter Configuration
 | Parameter                      | Value                                                                      |
 |-------------------------------|----------------------------------------------------------------------------|
-| **Model**                     | `ResNext 50`                                                                |
-| **RPN Anchor sizes**          | (4,), (8,), (16,), (32,), (64,)                                            |
-| **RPN Anchor aspect ratios**  | (0.5, 1.0, 2.0) × 5                                                         |
-| **Box ROI Pooling feature map**     | `['0', '1', '2', '3']`                                                     |
-| **Box ROI pooling output size**     | 7 × 7                                                                      |
-| **Box ROI pooling sampling ratio**  | 2                                                                          |
-| **Mask ROI Pooling feature map**     | `['0', '1', '2', '3']`                                                     |
-| **Mask ROI pooling output size**     | 14 × 14                                                                      |
-| **Mask ROI pooling sampling ratio**  | 4                                                                          |
+| **Model**                     | `PromptIR`                                                                |
 | **Optimizer**                 | `AdamW`                                                                    |
 | **Learning Rate**             | 1e-4                                                                       |
 | **Weight Decay**              | 5e-5                                                                       |
 | **Scheduler**                 | `CosineAnnealingLR`                                                        |
-| **T_max**                     | 30                                                                        |
-| **Epochs**                    | 30                                                                         |
+| **T_max**                     | 100                                                                        |
+| **Epochs**                    | 100                                                                         |
 | **Batch Size**                | 1                                                                          |
 
 ### Training Curve
@@ -83,7 +70,7 @@ Utilize Mask R-CNN, with ResNext-50 as the backbone to detect individual cell wi
     ![Image](image/mAP.png)
 
 ### Perfomance
-||Accuracy(%)|
+|PSNR|
 |----------|--|
-|Public mAP|33|
-|Public test|32|
+|Public valid|31.26|
+|Public test|31.04|
