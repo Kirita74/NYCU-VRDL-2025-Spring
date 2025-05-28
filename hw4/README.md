@@ -70,7 +70,7 @@ Utilize modified PromptIR to restore degraded images. The model is trained to re
     ![Image](image/mAP.png)
 
 ### Perfomance
-|PSNR|
+||PSNR|
 |----------|--|
 |Public valid|31.26|
 |Public test|31.04|
