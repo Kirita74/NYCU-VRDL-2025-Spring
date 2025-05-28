@@ -227,10 +227,10 @@ def argParse():
         default=1e-4,
         help="Learning rate")
     parser.add_argument(
-        "--optimizer_weight_decay",
+        "--decay",
         type=float,
         default=5e-5,
-        help="Weight decay for AdamW")
+        help="Weight decay for optimizer")
     parser.add_argument(
         "--pretrained_weight_path",
         type=str,
