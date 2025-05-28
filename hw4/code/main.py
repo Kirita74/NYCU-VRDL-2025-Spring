@@ -217,6 +217,11 @@ def argParse():
         default=100,
         help="Number of training epochs")
     parser.add_argument(
+        "--batch_size",
+        type=int,
+        default=1,
+        help="Batch size for training")
+    parser.add_argument(
         "--learning_rate",
         type=float,
         default=1e-4,
@@ -231,7 +236,6 @@ def argParse():
         type=str,
         default=None,
         help="Path of pretrained weight")
-
     parser.add_argument(
         '--log_dir',
         type=str,
