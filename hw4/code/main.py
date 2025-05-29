@@ -207,7 +207,7 @@ def argParse():
         default="..\\hw4_realse_dataset",
         help="Root directory of the dataset")
     parser.add_argument(
-        "SAVE_DIR",
+        "--save_dir",
         type=str,
         default="weight",
         help="Path to save model weight")
@@ -253,7 +253,7 @@ if __name__ == "__main__":
     EPOCHS = args.num_epochs
     LEARNING_RATE = args.learning_rate
     OPTIMIZER_WEIGHT_DECAY = args.optimizer_weight_decay
-    SAVE_DIR = args.SAVE_DIR
+    SAVE_DIR = args.save_dir
     LOG_DIR = args.lod_dir
     PRETRAIN_WEIGHT_PATH = args.pretrained_weight_path
     if (args.mode == "train"):

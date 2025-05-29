@@ -66,8 +66,10 @@ Utilize modified PromptIR to restore degraded images. The model is trained to re
 ### Training Curve
 - Epoch loss
     ![Image](image/train_loss.png)
-- Mean Average Precision
-    ![Image](image/mAP.png)
+- Average PSNR
+    ![Image](image/PSNR.png)
+- Average SSIM
+    ![Image](image/SSIM.png)
 
 ### Perfomance
 ||PSNR|
